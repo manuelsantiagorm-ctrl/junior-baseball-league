@@ -1,0 +1,10 @@
+{% extends 'league/base.html' %}
+{% block title %}{{ object.name }}{% endblock %}
+{% block content %}
+<a class="back" href="{% url 'team_list' %}">← Todos los equipos</a>
+<div class="section-heading"><div><span class="eyebrow">FICHA DEL EQUIPO · #{{ object.pk }}</span><h1>{{ object.name }}</h1><p>{{ object.city }} · {{ object.get_category_display }}</p></div><div class="actions"><a class="button secondary" href="{% url 'team_update' object.pk %}">Editar equipo</a><a class="danger-link" href="{% url 'team_delete' object.pk %}">Eliminar</a></div></div>
+<div class="section-heading"><h2>Plantilla</h2><a class="button button-primary" href="{% url 'player_create' %}?team={{ object.pk }}">+ Agregar jugador</a></div>
+<div class="table-wrap"><table><thead><tr><th>Nombre</th><th>Número</th><th>Posición</th><th>Acciones</th></tr></thead><tbody>
+{% for player in object.players.all %}<tr><td><a href="{% url 'player_detail' player.pk %}">{{ player.name }}</a></td><td>#{{ player.number }}</td><td>{{ player.position }}</td><td class="actions"><a href="{% url 'player_update' player.pk %}">Editar</a><a class="danger-link" href="{% url 'player_delete' player.pk %}">Eliminar</a></td></tr>{% empty %}<tr><td colspan="4" class="empty">Este equipo aún no tiene jugadores.</td></tr>{% endfor %}
+</tbody></table></div>
+{% endblock %}

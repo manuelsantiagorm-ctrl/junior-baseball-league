@@ -1,0 +1,9 @@
+{% extends 'league/base.html' %}
+{% block title %}Equipos{% endblock %}
+{% block content %}
+<div class="section-heading"><div><span class="eyebrow">NUESTRA LIGA</span><h1>Equipos</h1><p>Administra los equipos y sus plantillas.</p></div><a class="button button-primary" href="{% url 'team_create' %}">+ Nuevo equipo</a></div>
+<div class="table-wrap"><table><thead><tr><th>Nombre</th><th>Ciudad</th><th>Categoría</th><th>Jugadores</th><th>Acciones</th></tr></thead><tbody>
+{% for team in object_list %}<tr><td><a href="{% url 'team_detail' team.pk %}">{{ team.name }}</a></td><td>{{ team.city }}</td><td><span class="badge">{{ team.get_category_display }}</span></td><td>{{ team.player_count }}</td><td class="actions"><a href="{% url 'team_detail' team.pk %}">Ver</a><a href="{% url 'team_update' team.pk %}">Editar</a><a class="danger-link" href="{% url 'team_delete' team.pk %}">Eliminar</a></td></tr>
+{% empty %}<tr><td colspan="5" class="empty">Todavía no hay equipos. Crea el primero para comenzar.</td></tr>{% endfor %}
+</tbody></table></div>
+{% endblock %}

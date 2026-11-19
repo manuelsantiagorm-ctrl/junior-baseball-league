@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Gestión de la liga{% endblock %} · Junior Baseball League</title>
+  <link rel="stylesheet" href="{% static 'league/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'league/css/crud.css' %}">
+</head>
+<body>
+  <header class="header"><nav class="navbar" aria-label="Navegación principal">
+    <a class="brand" href="{% url 'home' %}"><span aria-hidden="true">⚾</span><span>JUNIOR<span class="brand-subtitle">BASEBALL LEAGUE</span></span></a>
+    <div class="nav-links"><a href="{% url 'home' %}">Inicio</a><a href="{% url 'team_list' %}">Equipos</a><a href="{% url 'player_list' %}">Jugadores</a></div>
+    <form method="post" action="{% url 'league_logout' %}">{% csrf_token %}<button class="admin-button" type="submit">Cerrar sesión · {{ request.user.username }}</button></form>
+  </nav></header>
+  <main class="section crud">
+    {% if messages %}<div aria-live="polite">{% for message in messages %}<p class="notice">{{ message }}</p>{% endfor %}</div>{% endif %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer"><strong>JUNIOR BASEBALL LEAGUE</strong><span>Pasión por el juego. Compromiso con el equipo.</span></footer>
+</body>
+</html>

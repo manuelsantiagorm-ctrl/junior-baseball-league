@@ -1,0 +1,8 @@
+{% extends 'league/base.html' %}
+{% block title %}Eliminar {{ entity }}{% endblock %}
+{% block content %}
+<a class="back" href="{% url list_url %}">← Volver al listado</a>
+<div class="form-panel"><span class="eyebrow">CONFIRMACIÓN</span><h1>Eliminar {{ entity }}</h1><p>¿Quieres eliminar a <strong>{{ object }}</strong>? Esta acción no se puede deshacer.</p>
+{% if is_team %}<p class="warning">También se eliminarán los {{ object.players.count }} jugadores asociados a este equipo.</p>{% endif %}
+<form method="post">{% csrf_token %}<div class="form-actions"><button class="button danger" type="submit">Sí, eliminar {{ entity }}</button><a class="button secondary" href="{% url list_url %}">Cancelar</a></div></form></div>
+{% endblock %}

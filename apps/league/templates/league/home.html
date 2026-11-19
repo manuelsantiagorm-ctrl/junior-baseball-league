@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junior Baseball League</title>
+    <link rel="stylesheet" href="{% static 'league/css/style.css' %}">
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar" aria-label="Navegación principal">
+            <a href="#home" class="brand">
+                <span class="brand-icon" aria-hidden="true">⚾</span>
+                <span>JUNIOR<span class="brand-subtitle">BASEBALL LEAGUE</span></span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="{% url 'team_list' %}">Equipos</a>
+                <a href="{% url 'player_list' %}">Jugadores</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <a href="/admin/login/" class="admin-button">Admin Login ↗</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <span class="eyebrow">PASIÓN · DISCIPLINA · EQUIPO</span>
+                <h1>Grandes sueños.<br>Un mismo <span>diamante.</span></h1>
+                <p>
+                    Bienvenido a Junior Baseball League.
+                    Un espacio para crecer, competir y disfrutar
+                    cada entrada del juego.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="{% url 'team_list' %}" class="button button-primary">Conoce los equipos →</a>
+                    <a href="#contact" class="button button-outline">Contáctanos</a>
+                </div>
+            </div>
+
+            <div class="hero-art" aria-hidden="true">
+                <div class="diamond">
+                    <span class="base base-top"></span>
+                    <span class="base base-right"></span>
+                    <span class="base base-bottom"></span>
+                    <span class="base base-left"></span>
+                    <span class="ball">⚾</span>
+                </div>
+                <span class="art-caption">EL JUEGO COMIENZA AQUÍ</span>
+            </div>
+        </section>
+
+        <section id="teams" class="section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">NUESTRA LIGA</span>
+                    <h2>Teams</h2>
+                </div>
+                <p>Talento y pasión en cada equipo.</p>
+            </div>
+
+            <!-- Equipos de ejemplo: reemplaza con los de tu liga. -->
+            <div class="cards">
+                <article class="card">
+                    <div class="team-icon navy">AG</div>
+                    <span class="card-label">EQUIPO</span>
+                    <h3>Águilas</h3>
+                    <p>Disciplina y determinación en cada jugada.</p>
+                </article>
+
+                <article class="card">
+                    <div class="team-icon orange">TG</div>
+                    <span class="card-label">EQUIPO</span>
+                    <h3>Tigres</h3>
+                    <p>Energía y trabajo en equipo dentro del campo.</p>
+                </article>
+
+                <article class="card">
+                    <div class="team-icon green">TR</div>
+                    <span class="card-label">EQUIPO</span>
+                    <h3>Toros</h3>
+                    <p>Compromiso para dar lo mejor en cada entrada.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="players" class="section players-section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">EL FUTURO DEL BÉISBOL</span>
+                    <h2>Players</h2>
+                </div>
+                <p>Conoce a los protagonistas del diamante.</p>
+            </div>
+
+            <!-- Jugadores de ejemplo. -->
+            <div class="cards">
+                <article class="player-card">
+                    <span class="player-number">07</span>
+                    <div>
+                        <span class="card-label">ÁGUILAS · PITCHER</span>
+                        <h3>Diego Martínez</h3>
+                    </div>
+                </article>
+
+                <article class="player-card">
+                    <span class="player-number">12</span>
+                    <div>
+                        <span class="card-label">TIGRES · CATCHER</span>
+                        <h3>Luis Hernández</h3>
+                    </div>
+                </article>
+
+                <article class="player-card">
+                    <span class="player-number">23</span>
+                    <div>
+                        <span class="card-label">TOROS · PRIMERA BASE</span>
+                        <h3>Carlos López</h3>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="contact-box">
+                <div>
+                    <span class="eyebrow">FORMA PARTE DE LA LIGA</span>
+                    <h2>Contact</h2>
+                    <p>
+                        ¿Quieres conocer más sobre los equipos y las inscripciones?
+                        Aquí encontrarás nuestros medios de contacto.
+                    </p>
+                </div>
+
+                <div class="contact-details">
+                    <h3>Junior Baseball League</h3>
+                    <p>Correo: próximamente</p>
+                    <p>Teléfono: próximamente</p>
+                    <p>Sede: por confirmar</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <strong>JUNIOR BASEBALL LEAGUE</strong>
+        <span>Pasión por el juego. Compromiso con el equipo.</span>
+    </footer>
+
+</body>
+</html>

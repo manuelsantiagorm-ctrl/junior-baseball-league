@@ -1,0 +1,8 @@
+{% extends 'league/base.html' %}
+{% block title %}{{ object.name }}{% endblock %}
+{% block content %}
+<a class="back" href="{% url 'player_list' %}">← Todos los jugadores</a>
+<article class="form-panel"><span class="eyebrow">FICHA DEL JUGADOR · #{{ object.pk }}</span><h1>{{ object.name }}</h1>
+<dl class="details"><dt>Número</dt><dd>#{{ object.number }}</dd><dt>Posición</dt><dd>{{ object.position }}</dd><dt>Fecha de nacimiento</dt><dd>{{ object.birth_date|date:'d/m/Y' }}</dd><dt>Equipo</dt><dd><a href="{% url 'team_detail' object.team_id %}">{{ object.team.name }}</a></dd></dl>
+<div class="form-actions"><a class="button button-primary" href="{% url 'player_update' object.pk %}">Editar jugador</a><a class="button secondary danger-link" href="{% url 'player_delete' object.pk %}">Eliminar jugador</a></div></article>
+{% endblock %}

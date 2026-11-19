@@ -1,0 +1,12 @@
+{% extends 'league/base.html' %}
+{% block title %}{% if object %}Editar{% else %}Nuevo{% endif %} {{ entity }}{% endblock %}
+{% block content %}
+<a class="back" href="{% url list_url %}">← Volver al listado</a>
+<div class="form-panel"><span class="eyebrow">GESTIÓN DE LA LIGA</span><h1>{% if object %}Editar{% else %}Nuevo{% endif %} {{ entity }}</h1><p class="muted">Completa todos los campos para guardar el registro.</p>
+{% if needs_team %}<p class="notice">Primero debes <a href="{% url 'team_create' %}">crear un equipo</a> para registrar jugadores.</p>{% endif %}
+<form method="post">{% csrf_token %}
+{{ form.non_field_errors }}
+{% for field in form %}<div class="field"><label for="{{ field.id_for_label }}">{{ field.label|capfirst }}</label>{{ field }}{% if field.help_text %}<p class="muted">{{ field.help_text }}</p>{% endif %}{{ field.errors }}</div>{% endfor %}
+<div class="form-actions"><button class="button button-primary" type="submit" {% if needs_team %}disabled{% endif %}>Guardar {{ entity }}</button><a class="button secondary" href="{% url list_url %}">Cancelar</a></div>
+</form></div>
+{% endblock %}
